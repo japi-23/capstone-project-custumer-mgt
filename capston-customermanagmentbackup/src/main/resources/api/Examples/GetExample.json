@@ -1,0 +1,16 @@
+
+  [
+                {
+                  "ID": 1,
+                  "first": "adam",
+                  "last": "henny",
+                  "departement": "Mule Developer"
+                },
+                {"ID": 2,
+                  "first": "Yemisrach",
+                  "last": "Bogale",
+                  "departement": "Mule Developer"
+
+                }
+
+              ]

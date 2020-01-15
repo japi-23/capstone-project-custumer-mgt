@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="create" format="json">
+      <types:shape format="weave" example="api/Examples/postExample.json"><![CDATA[%dw 2.0
+
+type create = {|
+  first: String, 
+  last: String, 
+  departement: String
+|} {"example": "{\\\"first\\\":\\\"adam\\\",\\\"last\\\":\\\"henny\\\",\\\"departement\\\":\\\"Mule Developer\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="update" format="json">
+      <types:shape format="weave" example="api/Examples/putExample.json"><![CDATA[%dw 2.0
+
+type update = {|
+  ID: Number {"typeId": "int"}, 
+  first: String, 
+  last: String, 
+  departement: String
+|} {"example": "{\\\"ID\\\":2,\\\"first\\\":\\\"Yemisrach\\\",\\\"last\\\":\\\"Bogale\\\",\\\"departement\\\":\\\"Mule Developer\\\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#8a33b11c-b226-41cd-a76d-45a35a39ef23">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="create"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#c18a5931-31fa-4b56-8da3-ee26272062c9">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="update"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

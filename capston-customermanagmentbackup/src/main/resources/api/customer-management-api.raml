@@ -1,0 +1,92 @@
+#%RAML 1.0
+title: Customer Management API
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/ce79e76c-753b-421a-a76d-446cc9d0ce76/ # 
+types:
+  user: !include /dataType.raml
+/users:
+  get:
+    description: getting all users
+    responses:
+      200:
+        body:
+          application/json:
+            type: user[]
+            example: !include /Examples/GetExample.json
+      404:
+        body:
+          application/json:
+            example:
+              {"message": "user not found!"}
+              
+  post:
+    description: creat new user  
+    body:
+      application/json:
+        type: user
+        example: !include /Examples/postExample.json
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+             { "message": "user created"}
+  put:
+      description: update single user
+      responses:
+        200:
+          body:
+           application/json:
+             type: user
+             example: !include Examples/putExample.json
+        400:
+          body:
+            application/json:
+             example:
+               { "message": "unauthorized to make update" }
+  /{ID}:
+    get:
+      description: getting spesific user by ID
+      responses:
+        200:
+          body:
+            application/json:
+              type: user
+              example: !include /Examples/singleuserExample.json
+               
+        400:
+         body:
+           application/json:
+             example:               
+                   {"message": "Bad request Id is requires"} 
+    delete:
+      description: deleting a single user by ID
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {"message": "user sucessfully deleted"}
+        401:
+          body:
+            application/json:
+              example:
+                   {"message": "unauthorized to make this request"}
+    
+              
+
+
+          
+
+
+            
+
+        
+               
+            
+
+
+                  
+              
+      
+    
+          
